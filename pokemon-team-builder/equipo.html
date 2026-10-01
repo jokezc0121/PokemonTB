@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear equipo - Pokémon Team Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="contenedor">
+      <a href="index.html" class="logo">Team<span>Builder</span></a>
+      <nav>
+        <a href="index.html#menu" class="boton boton-secundario">Volver al menú</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contenedor editor">
+    <h1>Crear equipo</h1>
+
+    <!-- Datos generales del equipo -->
+    <section class="panel">
+      <div class="fila-datos">
+        <div class="campo">
+          <label for="nombre-equipo">Nombre del equipo</label>
+          <input type="text" id="nombre-equipo" placeholder="Ej. Equipo Lluvia">
+        </div>
+        <div class="campo">
+          <label for="formato">Formato</label>
+          <select id="formato">
+            <option>Combate Individual</option>
+            <option>Combate Doble</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label for="arquetipo">Arquetipo</label>
+          <select id="arquetipo"></select>
+        </div>
+      </div>
+
+      <!-- Descripción del arquetipo y lo que ya tiene el equipo -->
+      <div class="arquetipo-info" id="arquetipo-info" hidden></div>
+    </section>
+
+    <div class="editor-grid">
+      <!-- Columna izquierda: equipo y editor -->
+      <div>
+        <section class="panel">
+          <h2>Mi equipo <span id="contador">0/6</span></h2>
+          <p class="ayuda">Haz clic en un Pokémon para configurarlo.</p>
+          <ul class="ranuras" id="ranuras"></ul>
+        </section>
+
+        <!-- Editor del integrante seleccionado -->
+        <section class="panel" id="editor-integrante">
+          <p class="ayuda">Agrega un Pokémon desde el catálogo para empezar.</p>
+        </section>
+      </div>
+
+      <!-- Columna derecha: catálogo y análisis -->
+      <div>
+        <section class="panel">
+          <h2>Catálogo</h2>
+          <div class="campo">
+            <label for="buscar">Buscar Pokémon</label>
+            <input type="text" id="buscar" placeholder="Nombre o tipo">
+          </div>
+          <ul class="catalogo" id="catalogo"></ul>
+        </section>
+
+        <section class="panel">
+          <h2>Estadísticas base promedio</h2>
+          <div id="estadisticas"></div>
+          <p class="aviso" id="aviso">Agrega Pokémon para ver el análisis.</p>
+
+          <button class="boton boton-principal" id="guardar">Guardar equipo</button>
+          <ul class="mensaje-lista" id="mensaje"></ul>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- Primero los datos simulados, luego la lógica -->
+  <script src="js/datos.js"></script>
+  <script src="js/equipo.js"></script>
+</body>
+</html>

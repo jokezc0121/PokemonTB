@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi perfil - Pokémon Team Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="contenedor">
+      <a href="index.html" class="logo">Team<span>Builder</span></a>
+      <nav>
+        <a href="equipo.html" class="boton boton-secundario">Crear equipo</a>
+        <a href="catalogo.html" class="boton boton-secundario">Catálogo</a>
+        <a href="index.html#menu" class="boton boton-secundario">Menú</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contenedor editor">
+    <h1>Mi perfil</h1>
+
+    <!-- Datos del entrenador (simulados) -->
+    <section class="panel perfil">
+      <div class="perfil-foto">
+        <img id="foto" src="" alt="Foto de perfil">
+        <label for="subir-foto" class="boton-mini">Cambiar foto</label>
+        <input type="file" id="subir-foto" accept="image/png, image/jpeg, image/webp" hidden>
+        <small class="error" id="error-foto"></small>
+      </div>
+
+      <div class="perfil-datos">
+        <h2 id="nombre-entrenador">AshCali</h2>
+        <p id="correo-entrenador">ash@correo.com</p>
+        <p id="bio-entrenador">Jugador de Combate Doble. Me gustan los equipos de lluvia.</p>
+
+        <ul class="perfil-resumen">
+          <li><strong>3</strong>Equipos</li>
+          <li><strong>Doble</strong>Formato favorito</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Pokémon favorito -->
+    <section class="panel">
+      <h2>Pokémon favorito</h2>
+
+      <div class="favorito">
+        <img class="favorito-img" id="favorito-img" src="" alt="">
+
+        <div class="favorito-info">
+          <p class="favorito-nombre" id="favorito-nombre"></p>
+          <div id="favorito-tipos"></div>
+          <p class="favorito-habilidades" id="favorito-habilidades"></p>
+          <div id="favorito-stats"></div>
+        </div>
+      </div>
+
+      <div class="campo cambiar-favorito">
+        <label for="elegir-favorito">Cambiar favorito</label>
+        <select id="elegir-favorito"></select>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/datos.js"></script>
+  <script src="js/perfil.js"></script>
+</body>
+</html>

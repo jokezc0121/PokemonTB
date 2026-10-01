@@ -1,0 +1,962 @@
+/* ===== Pokémon Team Builder - Estilos ===== */
+
+/* Colores de la paleta */
+:root {
+  --amarillo: #F2CD5C;
+  --naranja: #F2A766;
+  --rosa: #D94179;
+  --azul: #141259;
+  --noche: #010626;
+  --texto: #FFFFFF;
+  --gris: #B8B8D0;
+  --verde: #7BE0A5;
+}
+
+/* Fuente */
+.press-start-2p-regular {
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Press Start 2P", system-ui;
+  background-color: var(--noche);
+  color: var(--texto);
+  line-height: 1.8;
+}
+
+/* Los párrafos largos usan una fuente normal para que se lean bien */
+p {
+  font-family: system-ui, sans-serif;
+  color: var(--gris);
+}
+
+a {
+  color: var(--amarillo);
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--amarillo);
+  outline-offset: 2px;
+}
+
+.contenedor {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ===== Botones ===== */
+.boton {
+  display: inline-block;
+  padding: 14px 20px;
+  font-family: "Press Start 2P", system-ui;
+  font-size: 12px;
+  border: 3px solid var(--amarillo);
+  cursor: pointer;
+  text-align: center;
+}
+
+.boton-principal {
+  background-color: var(--amarillo);
+  color: var(--noche);
+  box-shadow: 4px 4px 0 var(--rosa);
+}
+
+.boton-principal:hover {
+  background-color: var(--naranja);
+  border-color: var(--naranja);
+}
+
+.boton-secundario {
+  background-color: transparent;
+  color: var(--amarillo);
+}
+
+.boton-secundario:hover {
+  background-color: var(--azul);
+}
+
+/* ===== Barra de navegación ===== */
+.navbar {
+  background-color: var(--azul);
+  border-bottom: 4px solid var(--rosa);
+  padding: 16px 0;
+}
+
+.navbar .contenedor {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.logo {
+  font-size: 16px;
+  color: var(--amarillo);
+}
+
+.logo span {
+  color: var(--rosa);
+}
+
+.navbar nav {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* ===== Hero ===== */
+.hero {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 32px;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.hero h1 span {
+  color: var(--amarillo);
+}
+
+.hero p {
+  font-size: 18px;
+  max-width: 600px;
+  margin: 0 auto 32px;
+}
+
+.hero .botones {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ===== Secciones ===== */
+.seccion {
+  padding: 60px 0;
+}
+
+.seccion h2 {
+  font-size: 20px;
+  text-align: center;
+  color: var(--naranja);
+  margin-bottom: 40px;
+}
+
+/* Tarjetas de beneficios */
+.tarjetas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.tarjeta {
+  background-color: var(--azul);
+  border: 3px solid var(--naranja);
+  padding: 24px;
+}
+
+.tarjeta h3 {
+  font-size: 12px;
+  color: var(--amarillo);
+  margin-bottom: 12px;
+}
+
+/* Pasos */
+.pasos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  list-style: none;
+}
+
+.pasos li {
+  border: 3px dashed var(--rosa);
+  padding: 20px;
+  text-align: center;
+  font-size: 11px;
+}
+
+.pasos li strong {
+  display: block;
+  font-size: 24px;
+  color: var(--rosa);
+  margin-bottom: 12px;
+}
+
+/* Llamado final */
+.cta {
+  background-color: var(--azul);
+  border: 4px solid var(--amarillo);
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.cta h2 {
+  margin-bottom: 16px;
+}
+
+.cta p {
+  margin-bottom: 24px;
+}
+
+/* ===== Footer ===== */
+.footer {
+  border-top: 4px solid var(--rosa);
+  padding: 24px 0;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.footer p {
+  font-size: 13px;
+}
+
+/* ===== Login y Registro ===== */
+.pagina-form {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 16px;
+}
+
+.caja-form {
+  width: 100%;
+  max-width: 420px;
+  background-color: var(--azul);
+  border: 4px solid var(--amarillo);
+  box-shadow: 8px 8px 0 var(--rosa);
+  padding: 32px 24px;
+}
+
+.caja-form .logo {
+  display: block;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.caja-form h1 {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.campo {
+  margin-bottom: 18px;
+}
+
+.campo label {
+  display: block;
+  font-size: 10px;
+  margin-bottom: 8px;
+}
+
+.campo input,
+.campo select {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-family: system-ui, sans-serif;
+  background-color: var(--noche);
+  color: var(--texto);
+  border: 3px solid var(--gris);
+}
+
+.campo input:focus,
+.campo select:focus {
+  outline: none;
+  border-color: var(--naranja);
+}
+
+.campo input.invalido {
+  border-color: var(--rosa);
+}
+
+.error {
+  display: block;
+  min-height: 14px;
+  margin-top: 6px;
+  font-size: 8px;
+  color: var(--rosa);
+}
+
+.caja-form .boton {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.mensaje {
+  font-size: 9px;
+  text-align: center;
+  margin-top: 16px;
+  color: var(--naranja);
+}
+
+.enlace-form {
+  text-align: center;
+  font-size: 9px;
+  margin-top: 24px;
+}
+
+/* ===== Menú (en el index) ===== */
+.menu-opciones {
+  max-width: 520px;
+  margin: 0 auto;
+  background-color: var(--azul);
+  border: 4px solid var(--amarillo);
+  box-shadow: 8px 8px 0 var(--rosa);
+  padding: 16px;
+  list-style: none;
+}
+
+.menu-opciones a {
+  display: block;
+  padding: 16px;
+  font-size: 13px;
+  color: var(--texto);
+}
+
+/* Flecha estilo videojuego al pasar el mouse */
+.menu-opciones a::before {
+  content: "▶ ";
+  color: transparent;
+}
+
+.menu-opciones a:hover,
+.menu-opciones a:focus {
+  background-color: var(--noche);
+  color: var(--amarillo);
+}
+
+.menu-opciones a:hover::before,
+.menu-opciones a:focus::before {
+  color: var(--rosa);
+}
+
+.menu-opciones small {
+  display: block;
+  font-family: system-ui, sans-serif;
+  font-size: 13px;
+  color: var(--gris);
+  margin-top: 6px;
+  padding-left: 22px;
+}
+
+/* ===== Editor de equipos ===== */
+.editor {
+  padding: 40px 0;
+}
+
+.editor h1 {
+  font-size: 20px;
+  margin-bottom: 24px;
+}
+
+.panel {
+  background-color: var(--azul);
+  border: 3px solid var(--naranja);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.panel h2 {
+  font-size: 12px;
+  color: var(--amarillo);
+  margin: 8px 0 16px;
+}
+
+.panel h2 span {
+  color: var(--rosa);
+}
+
+.fila-datos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.editor-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+/* Arquetipo del equipo */
+.arquetipo-info {
+  border: 3px dashed var(--rosa);
+  padding: 16px;
+}
+
+.arquetipo-info p {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.arquetipo-info h3 {
+  font-size: 9px;
+  color: var(--naranja);
+  margin-bottom: 10px;
+}
+
+.claves {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.claves li {
+  font-size: 8px;
+  padding: 6px 8px;
+  border: 2px solid var(--gris);
+  color: var(--gris);
+}
+
+.claves li.tiene {
+  border-color: var(--verde);
+  color: var(--verde);
+}
+
+.claves li::before {
+  content: "✗ ";
+}
+
+.claves li.tiene::before {
+  content: "✓ ";
+}
+
+/* Ranuras del equipo */
+.ranuras {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.ranura {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 64px;
+  padding: 10px;
+  border: 3px dashed var(--gris);
+  font-size: 10px;
+  color: var(--gris);
+}
+
+.ranura.llena {
+  border: 3px solid var(--amarillo);
+  background-color: var(--noche);
+  color: var(--texto);
+  cursor: pointer;
+}
+
+.ranura.activa {
+  border-color: var(--rosa);
+  box-shadow: 4px 4px 0 var(--rosa);
+}
+
+.ranura div {
+  flex: 1;
+}
+
+.ranura .objeto {
+  display: block;
+  margin-top: 6px;
+  font-size: 7px;
+  color: var(--naranja);
+}
+
+.numero {
+  color: var(--rosa);
+}
+
+.quitar {
+  background: none;
+  border: 2px solid var(--rosa);
+  color: var(--rosa);
+  font-family: "Press Start 2P", system-ui;
+  font-size: 8px;
+  padding: 6px;
+  cursor: pointer;
+}
+
+.quitar:hover {
+  background-color: var(--rosa);
+  color: var(--noche);
+}
+
+.ranura strong,
+.catalogo strong {
+  display: block;
+}
+
+/* ===== Etiquetas de tipo (colores oficiales) ===== */
+.tipo {
+  display: inline-block;
+  margin: 6px 4px 0 0;
+  padding: 3px 6px;
+  font-size: 7px;
+  color: var(--noche);   /* texto oscuro por defecto */
+  background-color: var(--gris);
+}
+
+/* Tipos oscuros llevan texto blanco para que se lea */
+.tipo-normal    { background-color: #A8A77A; }
+.tipo-fuego     { background-color: #EE8130; }
+.tipo-agua      { background-color: #6390F0; }
+.tipo-electrico { background-color: #F7D02C; }
+.tipo-planta    { background-color: #7AC74C; }
+.tipo-hielo     { background-color: #96D9D6; }
+.tipo-lucha     { background-color: #C22E28; color: #FFFFFF; }
+.tipo-veneno    { background-color: #A33EA1; color: #FFFFFF; }
+.tipo-tierra    { background-color: #E2BF65; }
+.tipo-volador   { background-color: #A98FF3; }
+.tipo-psiquico  { background-color: #F95587; }
+.tipo-bicho     { background-color: #A6B91A; }
+.tipo-roca      { background-color: #B6A136; }
+.tipo-fantasma  { background-color: #735797; color: #FFFFFF; }
+.tipo-dragon    { background-color: #6F35FC; color: #FFFFFF; }
+.tipo-siniestro { background-color: #705746; color: #FFFFFF; }
+.tipo-acero     { background-color: #B7B7CE; }
+.tipo-hada      { background-color: #D685AD; }
+
+/* Catálogo lateral del Team Builder */
+.catalogo {
+  list-style: none;
+  max-height: 520px;
+  overflow-y: auto;
+}
+
+.catalogo li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 2px solid var(--noche);
+  font-size: 10px;
+}
+
+.catalogo li div {
+  flex: 1;
+}
+
+.catalogo .vacio {
+  color: var(--gris);
+}
+
+.boton-mini {
+  background-color: var(--amarillo);
+  border: none;
+  color: var(--noche);
+  font-family: "Press Start 2P", system-ui;
+  font-size: 8px;
+  padding: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.boton-mini:hover {
+  background-color: var(--naranja);
+}
+
+.boton-mini:disabled {
+  background-color: var(--gris);
+  cursor: default;
+}
+
+/* Barras de estadísticas */
+.stat {
+  display: grid;
+  grid-template-columns: 90px 1fr 36px;
+  align-items: center;
+  gap: 10px;
+  font-size: 8px;
+  margin-bottom: 10px;
+}
+
+.stat b {
+  text-align: right;
+}
+
+.barra {
+  height: 10px;
+  background-color: var(--noche);
+}
+
+.barra i {
+  display: block;
+  height: 100%;
+  background-color: var(--amarillo);
+}
+
+.stat.baja {
+  color: var(--rosa);
+}
+
+.stat.baja .barra i {
+  background-color: var(--rosa);
+}
+
+.stat-total {
+  color: var(--rosa);
+}
+
+.aviso {
+  font-size: 14px;
+  margin: 16px 0 20px;
+  color: var(--naranja);
+}
+
+.panel .boton {
+  width: 100%;
+}
+
+.ayuda {
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+/* Movimientos */
+.movimientos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.movimientos select {
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
+  font-family: system-ui, sans-serif;
+  background-color: var(--noche);
+  color: var(--texto);
+  border: 3px solid var(--amarillo);
+}
+
+/* Tabla de estadísticas */
+.tabla-scroll {
+  overflow-x: auto;
+}
+
+.tabla-stats {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9px;
+}
+
+.tabla-stats th,
+.tabla-stats td {
+  padding: 8px 6px;
+  text-align: left;
+  border-bottom: 2px solid var(--noche);
+}
+
+.tabla-stats th {
+  color: var(--naranja);
+}
+
+.tabla-stats input {
+  width: 80px;
+  padding: 6px;
+  font-size: 15px;
+  font-family: system-ui, sans-serif;
+  background-color: var(--noche);
+  color: var(--texto);
+  border: 2px solid var(--gris);
+}
+
+.tabla-stats .total {
+  color: var(--amarillo);
+}
+
+/* Colores de la naturaleza */
+.tabla-stats .sube {
+  color: var(--amarillo);
+}
+
+.tabla-stats .sube::after {
+  content: " +";
+}
+
+.tabla-stats .baja {
+  color: var(--rosa);
+}
+
+.tabla-stats .baja::after {
+  content: " -";
+}
+
+.ev-restantes {
+  font-size: 13px;
+  margin-top: 12px;
+}
+
+/* Mensajes al guardar */
+.mensaje-lista {
+  list-style: none;
+  margin-top: 16px;
+  font-size: 9px;
+}
+
+.mensaje-lista li {
+  margin-bottom: 8px;
+}
+
+.mensaje-lista .mal {
+  color: var(--rosa);
+}
+
+.mensaje-lista .bien {
+  color: var(--amarillo);
+}
+
+/* ===== Sprites de Pokémon ===== */
+.sprite {
+  width: 48px;
+  height: 48px;
+  flex: none;
+  image-rendering: pixelated;
+  background-color: var(--noche);
+  border: 2px solid var(--naranja);
+  object-fit: contain;
+}
+
+.editor-titulo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.editor-titulo .sprite {
+  width: 64px;
+  height: 64px;
+}
+
+.editor-titulo h2 {
+  margin: 0;
+}
+
+/* ===== Perfil ===== */
+.perfil {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.perfil-foto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.perfil-foto img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  image-rendering: pixelated;
+  background-color: var(--noche);
+  border: 4px solid var(--amarillo);
+  box-shadow: 4px 4px 0 var(--rosa);
+}
+
+.perfil-datos {
+  flex: 1;
+}
+
+.perfil-datos h2 {
+  font-size: 16px;
+  margin: 0 0 8px;
+}
+
+.perfil-resumen {
+  list-style: none;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.perfil-resumen li {
+  border: 3px solid var(--rosa);
+  padding: 10px 14px;
+  font-size: 8px;
+  text-align: center;
+}
+
+.perfil-resumen strong {
+  display: block;
+  font-size: 14px;
+  color: var(--amarillo);
+  margin-bottom: 6px;
+}
+
+/* ===== Pokémon favorito ===== */
+.favorito {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.favorito-img {
+  width: 160px;
+  height: 160px;
+  flex: none;
+  image-rendering: pixelated;
+  object-fit: contain;
+  background-color: var(--noche);
+  border: 4px solid var(--rosa);
+  box-shadow: 6px 6px 0 var(--amarillo);
+}
+
+.favorito-info {
+  flex: 1;
+}
+
+.favorito-nombre {
+  font-family: "Press Start 2P", system-ui;
+  font-size: 18px;
+  color: var(--amarillo);
+}
+
+.favorito-habilidades {
+  font-size: 14px;
+  margin: 10px 0 16px;
+}
+
+.cambiar-favorito {
+  max-width: 320px;
+  margin-top: 24px;
+}
+
+/* ===== Tabla del catálogo ===== */
+.filtros {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 16px;
+}
+
+.tabla-catalogo {
+  width: 100%;
+  min-width: 820px;
+  border-collapse: collapse;
+  font-size: 9px;
+}
+
+.tabla-catalogo th {
+  color: var(--naranja);
+  text-align: center;
+  padding: 10px 6px;
+  border-bottom: 3px solid var(--naranja);
+}
+
+.tabla-catalogo td {
+  text-align: center;
+  padding: 8px 6px;
+  border-bottom: 2px solid var(--noche);
+}
+
+.tabla-catalogo tbody tr:hover {
+  background-color: var(--noche);
+}
+
+.tabla-catalogo .nombre {
+  text-align: left;
+  font-size: 10px;
+  color: var(--amarillo);
+}
+
+.tabla-catalogo .habilidad {
+  font-family: system-ui, sans-serif;
+  font-size: 13px;
+  color: var(--gris);
+}
+
+.tabla-catalogo .total {
+  color: var(--rosa);
+}
+
+.tabla-catalogo .vacio {
+  padding: 24px;
+  color: var(--gris);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .tarjetas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .pasos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .editor-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar .contenedor {
+    flex-direction: column;
+  }
+  .hero h1 {
+    font-size: 20px;
+  }
+  .hero p {
+    font-size: 16px;
+  }
+  .tarjetas,
+  .pasos {
+    grid-template-columns: 1fr;
+  }
+  .seccion h2 {
+    font-size: 16px;
+  }
+  .boton {
+    font-size: 10px;
+  }
+  .menu-opciones a {
+    font-size: 11px;
+  }
+  .fila-datos,
+  .ranuras,
+  .movimientos,
+  .filtros {
+    grid-template-columns: 1fr;
+  }
+  .perfil,
+  .favorito {
+    flex-direction: column;
+    text-align: center;
+  }
+  .favorito-info {
+    width: 100%;
+  }
+  .stat {
+    text-align: left;
+  }
+  .cambiar-favorito {
+    max-width: none;
+  }
+  .perfil-resumen {
+    justify-content: center;
+  }
+}

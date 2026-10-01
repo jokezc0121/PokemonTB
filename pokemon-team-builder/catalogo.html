@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo - Pokémon Team Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="contenedor">
+      <a href="index.html" class="logo">Team<span>Builder</span></a>
+      <nav>
+        <a href="equipo.html" class="boton boton-secundario">Crear equipo</a>
+        <a href="perfil.html" class="boton boton-secundario">Mi perfil</a>
+        <a href="index.html#menu" class="boton boton-secundario">Menú</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contenedor editor">
+    <h1>Catálogo de Pokémon</h1>
+
+    <section class="panel">
+      <div class="filtros">
+        <div class="campo">
+          <label for="buscar">Buscar</label>
+          <input type="text" id="buscar" placeholder="Nombre o habilidad">
+        </div>
+        <div class="campo">
+          <label for="filtro-tipo">Tipo</label>
+          <select id="filtro-tipo">
+            <option value="">Todos</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label for="ordenar">Ordenar por</label>
+          <select id="ordenar">
+            <option value="nombre">Nombre</option>
+            <option value="ps">PS</option>
+            <option value="atq">Ataque</option>
+            <option value="def">Defensa</option>
+            <option value="ate">At. Esp.</option>
+            <option value="dfe">Def. Esp.</option>
+            <option value="vel">Velocidad</option>
+            <option value="total">Total</option>
+          </select>
+        </div>
+      </div>
+
+      <p class="ayuda" id="resultados"></p>
+
+      <div class="tabla-scroll">
+        <table class="tabla-catalogo">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Pokémon</th>
+              <th>Tipos</th>
+              <th>Habilidades</th>
+              <th>Oculta</th>
+              <th>PS</th>
+              <th>Atq</th>
+              <th>Def</th>
+              <th>AtE</th>
+              <th>DfE</th>
+              <th>Vel</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-pokemon"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/datos.js"></script>
+  <script src="js/catalogo.js"></script>
+</body>
+</html>
