@@ -13,6 +13,7 @@ Aplicación web full-stack para crear, validar, analizar, guardar y compartir eq
 5. [Historias de usuario](#5-historias-de-usuario)
 6. [Alcance](#6-alcance)
 7. [Supuestos y restricciones](#7-supuestos-y-restricciones)
+8. [Arquitectura general](#8-arquitectura-general)
 
 ---
 
@@ -324,3 +325,48 @@ Las historias se agrupan por prioridad. Las de prioridad alta conforman el núcl
 - **Tecnología:** cliente y servidor separados, base de datos SQL o NoSQL, y persistencia dual obligatoria.
 - **Datos:** la lista de permitidos por regulación no viene de una fuente automática.
 - **Legal:** Pokémon y Pokémon Champions son marcas de Nintendo, Creatures Inc. y GAME FREAK. Es un proyecto académico, sin fines comerciales y sin afiliación oficial.
+
+---
+
+## 8. Arquitectura general
+
+El sistema se organiza en un cliente web desacoplado de un servidor propio que expone una API REST. Los datos se guardan de forma dual: los registros en una base de datos y los archivos en un sistema de ficheros.
+
+### Diagrama de arquitectura
+
+![Diagrama de arquitectura general del Pokémon Team Builder](anexos/arquitectura.png)
+
+### Componentes
+
+- **Cliente web:** interfaz que consume la API REST. Separa las vistas públicas de las privadas, muestra estados de carga y presenta los errores de red o validación al usuario.
+- **API REST:** servidor independiente que expone endpoints con verbos semánticos (GET, POST, PUT y DELETE) y códigos de estado HTTP estándar (200, 201, 400, 401 y 404). Intercambia información en JSON, tiene CORS configurado para el cliente y valida las credenciales y los equipos contra la base de datos.
+- **Base de datos:** almacena los usuarios, los equipos y sus integrantes, las versiones, el catálogo de Pokémon con sus seis estadísticas base, las regulaciones y los metadatos de los archivos.
+- **Almacenamiento de ficheros:** guarda los archivos físicos, ya sea en el disco del servidor o en un servicio cloud. El contenido de los archivos nunca se almacena dentro de la base de datos.
+
+### Comunicación y seguridad
+
+- El cliente y el servidor se comunican mediante peticiones HTTP asíncronas con intercambio en JSON.
+- Las contraseñas se guardan cifradas (hash) y, al iniciar sesión, el servidor emite un token de sesión.
+- Si alguien intenta abrir una vista privada sin sesión, el cliente lo redirige al login.
+- Los campos se validan tanto en el cliente como en el servidor.
+
+### Origen de los datos
+
+- El catálogo de Pokémon (tipos, estadísticas, habilidades, movimientos y sprites) se carga en el servidor desde una fuente pública como PokéAPI.
+- La lista de Pokémon permitidos por regulación se registra en la base de datos.
+
+### Persistencia dual
+
+Todo lo que el usuario sube o el sistema genera se guarda en dos lugares: el archivo físico en el sistema de ficheros y sus metadatos en la base de datos (nombre original, nombre único generado con UUID, tipo MIME, peso, ruta o URL, fecha de subida, autor y equipo o perfil al que pertenece). Antes de guardar, el servidor valida la extensión y el tamaño máximo del archivo.
+
+### Flujo general de la aplicación
+
+1. **Llegada:** el visitante entra a la landing y elige crear una cuenta o iniciar sesión.
+2. **Autenticación:** se registra o inicia sesión, y el servidor verifica las credenciales contra la base de datos.
+3. **Dashboard:** el usuario ve sus equipos y accesos rápidos para crear o importar uno.
+4. **Construcción:** en el editor elige formato y regulación, busca Pokémon en el catálogo y configura cada integrante.
+5. **Validación, análisis y recomendaciones:** el servidor valida las reglas, calcula debilidades y cobertura, y sugiere Pokémon.
+6. **Guardado dual:** el equipo queda en la base de datos y su archivo de exportación en el almacenamiento de ficheros, con sus metadatos registrados.
+7. **Consulta y gestión:** desde "Mis equipos" el usuario edita, duplica, elimina, descarga o comparte sus equipos y revisa versiones anteriores.
+8. **Cierre de sesión:** el logout invalida la sesión y devuelve al usuario a la landing.
+
