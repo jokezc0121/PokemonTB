@@ -1,4 +1,3 @@
-# PokemonTB
 # Pokémon Team Builder
 
 Aplicación web full-stack para crear, validar, analizar, guardar y compartir equipos de **Pokémon Champions**.
@@ -10,7 +9,10 @@ Aplicación web full-stack para crear, validar, analizar, guardar y compartir eq
 1. [Contexto](#1-contexto)
 2. [Problema](#2-problema)
 3. [Objetivos](#3-objetivos)
-
+4. [Público objetivo y roles](#4-público-objetivo-y-roles)
+5. [Historias de usuario](#5-historias-de-usuario)
+6. [Alcance](#6-alcance)
+7. [Supuestos y restricciones](#7-supuestos-y-restricciones)
 
 ---
 
@@ -78,3 +80,247 @@ Implementar autenticación y control de rutas públicas y privadas, y permitir i
 
 ---
 
+## 4. Público objetivo y roles
+
+### Perfiles de jugador
+
+#### Jugador nuevo
+
+- **Necesidad principal:** Entender qué Pokémon combinan bien y detectar debilidades evidentes.
+
+#### Jugador de clasificatorias
+
+- **Necesidad principal:** Probar variantes de un equipo y guardar su historial por temporada.
+
+#### Jugador de torneos (VGC)
+
+- **Necesidad principal:** Validar contra la regulación vigente y exportar la hoja de equipo.
+
+#### Creador de contenido o comunidad
+
+- **Necesidad principal:** Publicar equipos y compartirlos con un enlace o imagen.
+
+### Roles del sistema
+
+- **Usuario registrado:** gestiona sus propios equipos.
+- **Visitante:** solo accede a las vistas públicas (landing, login, registro y equipos compartidos públicamente).
+
+---
+
+## 5. Historias de usuario
+
+Las historias se agrupan por prioridad. Las de prioridad alta conforman el núcleo (MVP) del proyecto.
+
+### Prioridad alta (MVP)
+
+#### HU-01
+
+**Como** visitante, **quiero** conocer la herramienta en la landing **para** decidir si creo una cuenta.
+
+- **Módulo:** Landing
+- **Prioridad:** Alta
+- **Criterios de aceptación:**
+  - La landing es pública y responsive
+  - Tiene botones "Crear cuenta" e "Iniciar sesión"
+
+#### HU-02
+
+**Como** visitante, **quiero** registrarme con correo y contraseña **para** guardar mis equipos.
+
+- **Módulo:** Auth
+- **Prioridad:** Alta
+- **Criterios de aceptación:**
+  - Valida campos en cliente y servidor
+  - Rechaza correo ya registrado
+  - La contraseña se guarda con hash
+
+#### HU-03
+
+**Como** usuario, **quiero** iniciar y cerrar sesión **para** proteger mi información.
+
+- **Módulo:** Auth
+- **Prioridad:** Alta
+- **Criterios de aceptación:**
+  - Credenciales incorrectas muestran error
+  - Sin sesión, las vistas privadas redirigen al login
+  - El logout invalida la sesión
+
+#### HU-04
+
+**Como** usuario, **quiero** buscar Pokémon por nombre y tipo **para** elegir integrantes rápidamente.
+
+- **Módulo:** Catálogo
+- **Prioridad:** Alta
+- **Criterios de aceptación:**
+  - Filtra por nombre, tipo y regulación
+  - Muestra estado de carga
+  - La ficha muestra tipos, estadísticas y habilidades
+
+#### HU-05
+
+**Como** usuario, **quiero** crear un equipo de hasta seis Pokémon con su configuración **para** prepararlo para Pokémon Champions.
+
+- **Módulo:** Editor
+- **Prioridad:** Alta
+- **Criterios de aceptación:**
+  - Guarda habilidad, objeto, naturaleza, cuatro movimientos y estadísticas por integrante
+  - No admite más de seis integrantes
+
+#### HU-06
+
+**Como** usuario, **quiero** que el sistema valide el equipo contra la regulación **para** no llevar un equipo ilegal al juego.
+
+- **Módulo:** Validación
+- **Prioridad:** Alta
+- **Criterios de aceptación:**
+  - Rechaza especies no permitidas, repetidas u objetos repetidos
+  - Responde 400 con el campo afectado
+  - El cliente muestra el error junto al campo
+
+#### HU-09
+
+**Como** usuario, **quiero** editar, duplicar y eliminar mis equipos **para** mantener mi colección ordenada.
+
+- **Módulo:** Equipos
+- **Prioridad:** Alta
+- **Criterios de aceptación:**
+  - Cada operación se refleja en la base de datos
+  - Pide confirmación antes de eliminar
+
+### Prioridad media
+
+#### HU-07
+
+**Como** usuario, **quiero** ver debilidades y cobertura del equipo **para** corregir mis puntos débiles.
+
+- **Módulo:** Análisis
+- **Prioridad:** Media
+- **Criterios de aceptación:**
+  - Muestra la tabla frente a los 18 tipos
+  - Se actualiza al modificar el equipo
+
+#### HU-08
+
+**Como** usuario, **quiero** recibir recomendaciones de Pokémon con alta la estadística más baja de mi equipo **para** equilibrarlo.
+
+- **Módulo:** Recomendaciones
+- **Prioridad:** Media
+- **Criterios de aceptación:**
+  - Detecta la estadística de menor promedio
+  - Sugiere hasta cinco Pokémon
+  - Nunca sugiere especies repetidas ni no permitidas
+
+#### HU-10
+
+**Como** usuario, **quiero** exportar el equipo como TXT o PNG **para** usarlo o publicarlo fuera de la app.
+
+- **Módulo:** Exportación
+- **Prioridad:** Media
+- **Criterios de aceptación:**
+  - El archivo se guarda con nombre único y metadatos en la BD
+  - Se puede descargar
+
+#### HU-11
+
+**Como** usuario, **quiero** importar un equipo desde un TXT **para** no reescribirlo a mano.
+
+- **Módulo:** Importación
+- **Prioridad:** Media
+- **Criterios de aceptación:**
+  - Valida extensión y peso
+  - Crea el equipo o informa errores de formato
+
+#### HU-12
+
+**Como** usuario, **quiero** subir capturas y notas PDF a un equipo **para** documentar cómo me va en combate.
+
+- **Módulo:** Archivos
+- **Prioridad:** Media
+- **Criterios de aceptación:**
+  - Acepta JPG, PNG y PDF dentro del límite de peso
+  - El archivo queda asociado al equipo
+
+### Prioridad baja
+
+#### HU-13
+
+**Como** usuario, **quiero** ver y restaurar versiones anteriores **para** comparar cambios entre temporadas.
+
+- **Módulo:** Historial
+- **Prioridad:** Baja
+- **Criterios de aceptación:**
+  - Cada guardado crea una versión
+  - Se puede restaurar una versión previa
+
+#### HU-14
+
+**Como** usuario, **quiero** compartir un equipo con un enlace público **para** mostrarlo a otros jugadores.
+
+- **Módulo:** Compartir
+- **Prioridad:** Baja
+- **Criterios de aceptación:**
+  - El enlace es de solo lectura
+  - El dueño puede activarlo y desactivarlo
+
+#### HU-15
+
+**Como** usuario, **quiero** subir mi foto de perfil **para** personalizar mi cuenta.
+
+- **Módulo:** Perfil
+- **Prioridad:** Baja
+- **Criterios de aceptación:**
+  - Acepta JPG, PNG y WEBP
+  - El avatar queda guardado con metadatos en la BD
+
+---
+
+## 6. Alcance
+
+### Dentro del alcance
+
+- Gestión de cuentas, perfil y sesión.
+- Catálogo de Pokémon con filtros y lista de permitidos por regulación.
+- CRUD de equipos e integrantes, con validación, análisis de tipos y recomendaciones.
+- Importación, exportación (TXT y PNG), adjuntos, historial de versiones y enlaces para compartir.
+- Persistencia dual de todos los archivos del usuario.
+
+### Fuera del alcance
+
+- Simular combates o calcular daño exacto entre Pokémon.
+- Conectarse con la cuenta de Nintendo o transferir equipos directamente al juego.
+- Estadísticas de uso del metajuego obtenidas de partidas clasificatorias.
+- Funciones sociales avanzadas como comentarios, seguidores o chat.
+
+### Priorización: núcleo (MVP) y extensiones
+
+**Núcleo (MVP), prioridad alta:**
+
+- Landing, registro, login y logout (HU-01 a HU-03)
+- Catálogo y búsqueda (HU-04)
+- Crear y validar equipos (HU-05, HU-06)
+- Editar, duplicar y eliminar (HU-09)
+
+**Extensiones, prioridad media y baja:**
+
+- Análisis y recomendaciones (HU-07, HU-08)
+- Exportar e importar (HU-10, HU-11)
+- Capturas y notas PDF (HU-12)
+- Historial, enlaces públicos y avatar (HU-13 a HU-15)
+
+---
+
+## 7. Supuestos y restricciones
+
+### Supuestos
+
+- PokéAPI aporta tipos, estadísticas, habilidades, movimientos y sprites suficientes para el catálogo.
+- El equipo registrará manualmente la lista de Pokémon permitidos por regulación, tomada de fuentes públicas.
+- Las reglas de validación se limitan a las descritas en este documento.
+
+### Restricciones
+
+- **Tiempo:** Avance 1 en la semana 9, Avance 2 en la semana 13 y entrega final en la semana 15 o 16.
+- **Equipo:** mínimo 4 integrantes, con aportes verificables en Git.
+- **Tecnología:** cliente y servidor separados, base de datos SQL o NoSQL, y persistencia dual obligatoria.
+- **Datos:** la lista de permitidos por regulación no viene de una fuente automática.
+- **Legal:** Pokémon y Pokémon Champions son marcas de Nintendo, Creatures Inc. y GAME FREAK. Es un proyecto académico, sin fines comerciales y sin afiliación oficial.
